@@ -31,7 +31,7 @@ func show_start_menu():
 	$StartButton.show()
 
 func _on_StartButton_pressed():
-	$Message.hide()
+	show_temp_message("Get ready...", 1)
 	$StartButton.hide()
 	update_score(0)
 	$ScoreLabel.show()
