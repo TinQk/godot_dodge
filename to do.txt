@@ -1,0 +1,4 @@
+- compteur de points
+
+apprendre à faire un HUD: quel type de node ? 
+screensize géré quand HUD appelé ou directement dans main ? --> tester avec main

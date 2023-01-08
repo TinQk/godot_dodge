@@ -1,46 +1,59 @@
-extends Node
+extends Node # le type de scene (ici c'est basique)
 
-# allow to chose the mob scene we want to instance:
+
+# allow to chose the scenes we want to instance:
 export(PackedScene) var mob_scene
 
 
-var score
+# variables
+var score # le score du joueur
+var screen_size
 
 
-
+### INIT
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize() # permet d'avoir un seed different pour le random
-	new_game()
+	# le HUD est appelé de base car c'est un enfant
 
 
-
-
-
-
+### RUNNING
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
 
 
-func game_over():
-	$ScoreTimer.stop()
-	$MobTimer.stop()
-	
+
+
+### FUNCTIONS
+
+# On lance le jeu quand on appui sur start
+func _on_HUD_start_game():
+	new_game()
 
 func new_game():
 	score = 0
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
 
-
 func _on_StartTimer_timeout():
 	$MobTimer.start()
 	$ScoreTimer.start()
 
+func game_over():
+	$ScoreTimer.stop()
+	$MobTimer.stop()
+	$HUD.show_game_over()
+
+
+### SCORE
 
 func _on_ScoreTimer_timeout():
 	score += 1
+	$HUD.update_score(score)
+
+
+### MOB GENERATION
 
 func _on_MobTimer_timeout():
 	# Créer une nouvelle instance de mob
@@ -64,5 +77,9 @@ func _on_MobTimer_timeout():
 
 	# Spawn the mob by adding it to the Main scene.
 	add_child(mob)
+
+
+
+
 
 
