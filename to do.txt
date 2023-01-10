@@ -1,4 +1,12 @@
-- compteur de points
+1) Ajouter un compteur pour le temps et le différencier du compteur de score
 
-apprendre à faire un HUD: quel type de node ? 
-screensize géré quand HUD appelé ou directement dans main ? --> tester avec main
+
+2) Début du menu de sélection de changement de règle
+
+Quand compteur de point atteint un seuil:
+- mettre le jeu en pause
+- faire apparaitre un bouton
+
+Quand on clique sur le bouton:
+- détruire tous les enemis
+- reprendre le jeu
