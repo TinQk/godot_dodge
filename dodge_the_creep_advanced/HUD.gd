@@ -18,6 +18,7 @@ func _ready():
 ### MENU
 
 func hide_hud_control():
+	$TimeLabel.hide()
 	$ScoreLabel.hide()
 	$Message.hide()
 	$StartButton.hide()
@@ -33,7 +34,9 @@ func show_start_menu():
 func _on_StartButton_pressed():
 	show_temp_message("Get ready...", 1)
 	$StartButton.hide()
+	update_time(0)
 	update_score(0)
+	$TimeLabel.show()
 	$ScoreLabel.show()
 	emit_signal("start_game")
 	
@@ -42,6 +45,7 @@ func show_game_over():
 	show_temp_message("Game Over", 4) # message temporaire 4 secondes
 	
 	yield(get_tree().create_timer(4), "timeout")
+	$TimeLabel.hide()
 	$ScoreLabel.hide()
 	
 	yield(get_tree().create_timer(1), "timeout")
@@ -64,3 +68,6 @@ func _on_MessageTimer_timeout():
 
 func update_score(score):
 	$ScoreLabel.text = str(score)
+
+func update_time(time):
+	$TimeLabel.text = str(time)

@@ -18,13 +18,24 @@ shortcut = SubResource( 2 )
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 2 )
 
+[node name="TimeLabel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -181.0
+margin_top = 39.0
+margin_right = -77.0
+margin_bottom = 83.0
+custom_fonts/font = SubResource( 1 )
+text = "0"
+align = 1
+
 [node name="ScoreLabel" type="Label" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -52.0
-margin_top = 19.0
-margin_right = 52.0
-margin_bottom = 63.0
+margin_left = 92.0
+margin_top = 38.0
+margin_right = 196.0
+margin_bottom = 82.0
 custom_fonts/font = SubResource( 1 )
 text = "0"
 align = 1
@@ -60,6 +71,5 @@ text = "Start"
 wait_time = 2.0
 one_shot = true
 
-[connection signal="start_game" from="." to="." method="_on_HUD_start_game"]
 [connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_MessageTimer_timeout"]

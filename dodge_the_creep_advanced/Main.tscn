@@ -24,7 +24,7 @@ color = Color( 0.592157, 0.592157, 0.741176, 1 )
 
 [node name="HUD" parent="." instance=ExtResource( 4 )]
 
-[node name="ScoreTimer" type="Timer" parent="."]
+[node name="TimeTimer" type="Timer" parent="."]
 
 [node name="StartTimer" type="Timer" parent="."]
 wait_time = 2.0
@@ -47,12 +47,14 @@ rotation = 0.0125255
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
+volume_db = -18.353
 
 [node name="DeathSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
+volume_db = -20.975
 
 [connection signal="start_game" from="HUD" to="." method="_on_HUD_start_game"]
-[connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
+[connection signal="timeout" from="TimeTimer" to="." method="_on_TimeTimer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
 [connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]

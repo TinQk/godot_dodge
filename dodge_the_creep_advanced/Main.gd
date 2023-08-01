@@ -6,6 +6,8 @@ export(PackedScene) var mob_scene
 
 
 # variables
+var time # horloge en secondes
+var coef
 var score # le score du joueur
 var screen_size
 
@@ -32,6 +34,8 @@ func _on_HUD_start_game():
 	new_game()
 
 func new_game():
+	time = 0
+	coef = 1
 	score = 0
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
@@ -39,20 +43,22 @@ func new_game():
 
 func _on_StartTimer_timeout():
 	$MobTimer.start()
-	$ScoreTimer.start()
+	$TimeTimer.start()
 
 func game_over():
 	$Music.stop()
 	$DeathSound.play()
-	$ScoreTimer.stop()
+	$TimeTimer.stop()
 	$MobTimer.stop()
 	$HUD.show_game_over()
 
 
 ### SCORE
 
-func _on_ScoreTimer_timeout():
-	score += 1
+func _on_TimeTimer_timeout():
+	time += 1
+	score += coef
+	$HUD.update_time(time)
 	$HUD.update_score(score)
 
 
