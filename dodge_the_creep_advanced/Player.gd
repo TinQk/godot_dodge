@@ -2,7 +2,7 @@ extends Area2D
 
 signal hit #signale les collisions
 
-export var speed = 400 # export ajoute la variable aux propriétés du node pour pouvoir la changer manuellement
+@export var speed = 400 # export ajoute la variable aux propriétés du node pour pouvoir la changer manuellement
 var screen_size
 
 
@@ -30,9 +30,9 @@ func _process(delta):
 	# normalisation de la vitesse et declenchement de l'animation du sprite pendant le mouvement
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
-		$AnimatedSprite.play() # ou get_node("AnimatedSprite").play()
+		$AnimatedSprite2D.play() # ou get_node("AnimatedSprite2D").play()
 	else:
-		$AnimatedSprite.stop()
+		$AnimatedSprite2D.stop()
 	
 	# Update position
 	position += velocity * delta
@@ -43,12 +43,12 @@ func _process(delta):
 
 	# Paramètres de l'animation
 	if velocity.y != 0:
-		$AnimatedSprite.animation = "up"
-		$AnimatedSprite.flip_v = velocity.y > 0
+		$AnimatedSprite2D.animation = "up"
+		$AnimatedSprite2D.flip_v = velocity.y > 0
 	
 	elif velocity.x != 0:
-		$AnimatedSprite.animation = "walk"
-		$AnimatedSprite.flip_h = velocity.x < 0
+		$AnimatedSprite2D.animation = "walk"
+		$AnimatedSprite2D.flip_h = velocity.x < 0
 
 
 # Gérer l'impact avec un ennemi

@@ -28,7 +28,7 @@ func show_start_menu():
 	$Message.show()
 	
 	# Make a one-shot timer and wait for it to finish.
-	yield(get_tree().create_timer(1), "timeout")
+	await get_tree().create_timer(1).timeout
 	$StartButton.show()
 
 func _on_StartButton_pressed():
@@ -44,11 +44,11 @@ func _on_StartButton_pressed():
 func show_game_over():
 	show_temp_message("Game Over", 4) # message temporaire 4 secondes
 	
-	yield(get_tree().create_timer(4), "timeout")
+	await get_tree().create_timer(4).timeout
 	$TimeLabel.hide()
 	$ScoreLabel.hide()
 	
-	yield(get_tree().create_timer(1), "timeout")
+	await get_tree().create_timer(1).timeout
 	show_start_menu()
 
 

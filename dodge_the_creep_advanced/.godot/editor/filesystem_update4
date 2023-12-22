@@ -1,0 +1,6 @@
+res://default_env.tres
+res://Main.tscn
+res://HUD.tscn
+res://Main.gd
+res://Mob.tscn
+res://Mob.gd
